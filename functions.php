@@ -150,7 +150,7 @@ function ia4_header_style()
 {
     ?>
     <?php if (get_header_textcolor() == 'blank') : ?>
-        <style type="text/css">
+        <style>
             .header-text {
                 clip: rect(1px, 1px, 1px, 1px);
                 position: absolute;
@@ -276,4 +276,12 @@ function add_textarea()
     }
 
     echo '<p class="comments-area"><textarea id="comment" name="comment" placeholder="Comment (required)" cols="45" rows="1" aria-required="true" required></textarea></p>';
+}
+
+// Additions
+add_filter('style_loader_tag', 'remove_type_attr', 10, 2);
+add_filter('script_loader_tag', 'remove_type_attr', 10, 2);
+function remove_type_attr($tag, $handle)
+{
+    return preg_replace("/type=['\"]text\/(javascript|css)['\"]/", '', $tag);
 }
