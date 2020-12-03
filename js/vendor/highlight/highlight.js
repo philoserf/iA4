@@ -14,7 +14,7 @@ Johann Burkard
 
 */
 
-jQuery.fn.highlight = function(pat) {
+jQuery.fn.highlight = function (pat) {
   function innerHighlight(node, pat) {
     var skip = 0;
     if (node.nodeType == 3) {
@@ -44,15 +44,15 @@ jQuery.fn.highlight = function(pat) {
     return skip;
   }
   return this.length && pat && pat.length
-    ? this.each(function() {
+    ? this.each(function () {
         innerHighlight(this, pat.toUpperCase());
       })
     : this;
 };
 
-jQuery.fn.removeHighlight = function() {
+jQuery.fn.removeHighlight = function () {
   return this.find("span.highlight")
-    .each(function() {
+    .each(function () {
       this.parentNode.firstChild.nodeName;
       with (this.parentNode) {
         replaceChild(this.firstChild, this);

@@ -1,6 +1,6 @@
 /*! modernizr 3.6.0 (Custom Build) | MIT *
  * https://modernizr.com/download/?-cssanimations-csstransforms-csstransforms3d-csstransitions-domprefixes-prefixes-setclasses-shiv-testallprops-testprop-teststyles !*/
-!(function(e, t, n) {
+!(function (e, t, n) {
   function r(e, t) {
     return typeof e === t;
   }
@@ -57,7 +57,7 @@
 
   function l(e) {
     return e
-      .replace(/([a-z])-([a-z])/g, function(e, t, n) {
+      .replace(/([a-z])-([a-z])/g, function (e, t, n) {
         return t + n.toUpperCase();
       })
       .replace(/^-/, "");
@@ -104,7 +104,7 @@
   }
 
   function f(e, t) {
-    return function() {
+    return function () {
       return e.apply(t, arguments);
     };
   }
@@ -121,7 +121,7 @@
 
   function p(e) {
     return e
-      .replace(/([A-Z])/g, function(e, t) {
+      .replace(/([A-Z])/g, function (e, t) {
         return "-" + t.toLowerCase();
       })
       .replace(/^ms-/, "-ms-");
@@ -156,7 +156,7 @@
         (a = a.join(" or ")),
         c(
           "@supports (" + a + ") { #modernizr { position: absolute; } }",
-          function(e) {
+          function (e) {
             return "absolute" == m(e, null, "position");
           }
         )
@@ -214,23 +214,23 @@
         classPrefix: "",
         enableClasses: !0,
         enableJSClass: !0,
-        usePrefixes: !0
+        usePrefixes: !0,
       },
       _q: [],
-      on: function(e, t) {
+      on: function (e, t) {
         var n = this;
-        setTimeout(function() {
+        setTimeout(function () {
           t(n[e]);
         }, 0);
       },
-      addTest: function(e, t, n) {
+      addTest: function (e, t, n) {
         S.push({ name: e, fn: t, options: n });
       },
-      addAsyncTest: function(e) {
+      addAsyncTest: function (e) {
         S.push({ name: null, fn: e });
-      }
+      },
     },
-    Modernizr = function() {};
+    Modernizr = function () {};
   (Modernizr.prototype = E), (Modernizr = new Modernizr());
   var b = E._config.usePrefixes
     ? " -webkit- -moz- -o- -ms- ".split(" ")
@@ -239,7 +239,7 @@
   var x = t.documentElement,
     w = "svg" === x.nodeName.toLowerCase();
   w ||
-    !(function(e, t) {
+    !(function (e, t) {
       function n(e, t) {
         var n = e.createElement("p"),
           r = e.getElementsByTagName("head")[0] || e.documentElement;
@@ -301,7 +301,7 @@
           (t.createElem = e.createElement),
           (t.createFrag = e.createDocumentFragment),
           (t.frag = t.createFrag())),
-          (e.createElement = function(n) {
+          (e.createElement = function (n) {
             return C.shivMethods ? i(n, e, t) : t.createElem(n);
           }),
           (e.createDocumentFragment = Function(
@@ -309,7 +309,7 @@
             "return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(" +
               r()
                 .join()
-                .replace(/[\w\-:]+/g, function(e) {
+                .replace(/[\w\-:]+/g, function (e) {
                   return (
                     t.createElem(e), t.frag.createElement(e), 'c("' + e + '")'
                   );
@@ -342,14 +342,14 @@
         g = "_html5shiv",
         v = 0,
         y = {};
-      !(function() {
+      !(function () {
         try {
           var e = t.createElement("a");
           (e.innerHTML = "<xyz></xyz>"),
             (c = "hidden" in e),
             (f =
               1 == e.childNodes.length ||
-              (function() {
+              (function () {
                 t.createElement("a");
                 var e = t.createDocumentFragment();
                 return (
@@ -374,7 +374,7 @@
         shivDocument: u,
         createElement: i,
         createDocumentFragment: s,
-        addElements: o
+        addElements: o,
       };
       (e.html5 = C),
         u(t),
@@ -389,26 +389,26 @@
   var P = E._config.usePrefixes ? _.split(" ") : [];
   E._cssomPrefixes = P;
   var j = ((E.testStyles = c), { elem: s("modernizr") });
-  Modernizr._q.push(function() {
+  Modernizr._q.push(function () {
     delete j.elem;
   });
   var k = { style: j.elem.style };
-  Modernizr._q.unshift(function() {
+  Modernizr._q.unshift(function () {
     delete k.style;
   });
-  E.testProp = function(e, t, r) {
+  E.testProp = function (e, t, r) {
     return g([e], n, t, r);
   };
   (E.testAllProps = v),
     (E.testAllProps = y),
     Modernizr.addTest("cssanimations", y("animationName", "a", !0)),
-    Modernizr.addTest("csstransforms", function() {
+    Modernizr.addTest("csstransforms", function () {
       return (
         -1 === navigator.userAgent.indexOf("Android 2.") &&
         y("transform", "scale(1)", !0)
       );
     }),
-    Modernizr.addTest("csstransforms3d", function() {
+    Modernizr.addTest("csstransforms3d", function () {
       return !!y("perspective", "1px", !0);
     }),
     Modernizr.addTest("csstransitions", y("transition", "all", !0)),

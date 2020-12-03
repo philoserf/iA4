@@ -6,10 +6,10 @@
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
-(function(b, c) {
+(function (b, c) {
   var $ = b.jQuery || b.Cowboy || (b.Cowboy = {}),
     a;
-  $.throttle = a = function(e, f, j, i) {
+  $.throttle = a = function (e, f, j, i) {
     var h,
       d = 0;
     if (typeof f !== "boolean") {
@@ -48,7 +48,7 @@
     }
     return g;
   };
-  $.debounce = function(d, e, f) {
+  $.debounce = function (d, e, f) {
     return f === c ? a(d, e, false) : a(d, f, e !== false);
   };
 })(this);

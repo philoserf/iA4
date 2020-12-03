@@ -3,11 +3,11 @@
  * Author: iA
  * http://ia.net
  */
-var iA4 = (function($) {
+var iA4 = (function ($) {
   /**
    * Jetpack contact form markup optimization
    */
-  $(".contact-form :input").each(function(index, elem) {
+  $(".contact-form :input").each(function (index, elem) {
     var eId = $(elem).attr("id");
     var label = null;
     if (
@@ -28,13 +28,13 @@ var iA4 = (function($) {
     /**
      * Toggle the search bar
      */
-    toggleSearch: function(e) {
+    toggleSearch: function (e) {
       var input = $(".navigation input");
       $(".search").toggleClass("current_page_item");
 
       // focus input on click
       if (!$("body").hasClass("mobile")) {
-        setTimeout(function() {
+        setTimeout(function () {
           input.focus();
         }, 1);
       }
@@ -48,7 +48,7 @@ var iA4 = (function($) {
       }
       $("#searchterm").focus();
 
-      setTimeout(function() {
+      setTimeout(function () {
         $("#result").empty();
       }, 450);
     },
@@ -56,14 +56,14 @@ var iA4 = (function($) {
     /**
      * Toggle the mobile menu
      */
-    toggleMenu: function() {
+    toggleMenu: function () {
       $("body").toggleClass("menu-open");
     },
 
     /**
      * Load search results
      */
-    search: function(ev) {
+    search: function (ev) {
       // escape
       if (ev.keyCode === 27) {
         return methods.toggleSearch();
@@ -77,7 +77,7 @@ var iA4 = (function($) {
       // start searching from one word
       if (!val.length) {
         result.height(0);
-        setTimeout(function() {
+        setTimeout(function () {
           $("#result").empty();
         }, 350);
         return true;
@@ -89,7 +89,7 @@ var iA4 = (function($) {
 
       $("#result").load(
         ia4ajax.homeurl + "/?s=" + encodeURIComponent(val) + " #iA4search",
-        function() {
+        function () {
           var height = result.find("#iA4search").height() + 64;
           result.height(height);
           result.find("h2, p:not(.meta--blog)").highlight(val);
@@ -100,7 +100,7 @@ var iA4 = (function($) {
     /**
      * Trigger actions when certain keys are pressed and no input is focussed
      */
-    keyboardShortcuts: function(e) {
+    keyboardShortcuts: function (e) {
       if ($(":input:focus").size() === 0) {
         var key = e.keyCode ? e.keyCode : e.which;
 
@@ -112,20 +112,20 @@ var iA4 = (function($) {
       }
     },
 
-    adjustPlaceholder: function(ev) {
+    adjustPlaceholder: function (ev) {
       $(window.document).width() > 767
         ? $("#searchterm").attr("placeholder", "What are you looking for?")
         : $("#searchterm").attr("placeholder", "Search");
     },
 
-    registerEvents: function() {
+    registerEvents: function () {
       $("[class*=js-action]")
         .off()
-        .on("click.ia4", function(e) {
+        .on("click.ia4", function (e) {
           e.preventDefault();
           methods[$(this).attr("data-action")].call(this, e);
         });
-    }
+    },
   };
 
   $(".js-search").on("keyup", $.debounce(250, methods.search));
@@ -133,10 +133,10 @@ var iA4 = (function($) {
   $(document).on("keydown", methods.keyboardShortcuts);
 
   return {
-    initialize: function() {
+    initialize: function () {
       methods.registerEvents();
       methods.adjustPlaceholder();
-    }
+    },
   };
 })((window.iA4 = jQuery || {}));
 
